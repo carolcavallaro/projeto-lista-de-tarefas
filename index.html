@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Tarefas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container" id="card">
+    <div class="header">
+      <h1>Lista de Tarefas</h1>
+      <div class="controls">
+        <button id="theme-toggle" class="btn-icon" title="Modo Escuro/Claro">🌙</button>
+        <button id="audio-toggle" class="btn-icon" title="Tocar/Pausar Lo-Fi">🎵</button>
+      </div>
+    </div>
+    
+    <form id="task-form" class="input-group">
+      <input type="text" id="task-input" placeholder="Digite uma nova tarefa..." required />
+      <button type="submit" class="btn-add">Adicionar</button>
+    </form>
+
+    <ul id="task-list" class="task-list"></ul>
+    <p id="empty-msg" class="empty-state">Nenhuma tarefa cadastrada.</p>
+  </div>
+
+  <!-- Audio Lo-Fi Royalty Free -->
+  <audio id="lofi-audio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
