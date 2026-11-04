@@ -1,49 +1,45 @@
-# 📋 Lista de Tarefas (Task Manager) 🎧✨
+# 📋 Task Manager & Study Space 🎧✨
 
-Aplicação web desenvolvida para colocar em prática os conceitos e conteúdos aprendidos no curso de **Análise e Desenvolvimento de Sistemas (UNINTER)**. O projeto serve como item de portfólio prático, demonstrando fundamentos de desenvolvimento front-end com a estrutura clássica (**HTML5**, **CSS3** e **JavaScript puro**).
+Aplicação web interativa desenvolvida para gerenciar tarefas do dia a dia, unindo produtividade, design moderno e uma experiência imersiva de *home office*. O projeto integra conceitos avançados de front-end, persistência de dados local e recursos multimídia.
 
-> 💡 **Nota de Design:** A imagem de background da aplicação foi gerada em colaboração com o **Google Gemini**, buscando criar uma atmosfera aconchegante que remete a café, código e organização de tarefas.
+💡 **Nota de Design:** A atmosfera visual da aplicação foi codesenhada em colaboração com o Google Gemini, priorizando um ambiente acolhedor de desenvolvimento.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- 📝 **Adicionar tarefas:** Incluir novos itens na lista com validação.
-- ✅ **Status de Conclusão:** Marcação/desmarcação de tarefas com estilo visual riscado.
-- 🗑️ **Excluir tarefas:** Remover itens da lista através do ícone de lixeira.
-- 🌙 **Modo Escuro (Dark Mode):** Alternância dinâmica de tema (Claro / Escuro) com salvamento automático das preferências do usuário.
-- 🎵 **Player Lo-Fi Ambientado:** Botão integrado para reproduzir/pausar áudio Lo-Fi relaxante em loop para foco nos estudos ou trabalho.
-- 💾 **Persistência de Dados:** Uso de `localStorage` para manter as tarefas registradas no navegador mesmo após fechar ou atualizar a página.
-- 🛡️ **Sanitização de Dados:** Tratamento de entradas contra vulnerabilidades de Cross-Site Scripting (XSS).
+- 📝 **Gerenciamento Dinâmico:** Adição e validação em tempo real de novas tarefas.
+- ✅ **Controle de Estado:** Marcação e desmarcação de tarefas concluídas com estilo visual riscado.
+- 🗑️ **Exclusão Segura:** Remoção individual de itens com isolamento de eventos de clique.
+- 🌙 **Modo Escuro (Dark Mode):** Alternância fluida de temas (Claro/Escuro) com persistência automática no `localStorage`.
+- 🎵 **Player Lo-Fi Integrado:** Reprodução e pausa de áudio ambiente em loop para foco em longas sessões de código.
+- 💾 **Persistência de Dados:** Salvamento automático de estado no navegador do usuário.
+- 🛡️ **Segurança de Entrada:** Sanitização de dados contra vulnerabilidades de Injeção de HTML/XSS.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5:** Estruturação semântica e acessível.
-- **CSS3:** Flexbox para alinhamento centralizado, variáveis CSS (`:root`), efeito de transparência (`backdrop-filter`) e regras responsivas.
-- **JavaScript (ES6+):** Manipulação dinâmica do DOM, gestão de eventos, tratamento de áudio assíncrono e `localStorage API`.
-- **Google Gemini (GenAI):** Geração e refinamento de assets visuais para a interface.
+- **HTML5:** Estruturação semântica orientada a boas práticas de acessibilidade.
+- **CSS3:** Layouts flexíveis com Flexbox, variáveis de escopo (`:root`), efeitos de transparência (`backdrop-filter`) e design responsivo.
+- **JavaScript (ES6+):** Manipulação reativa do DOM, gestão de eventos assíncronos e API de armazenamento local.
+- **Google Gemini (GenAI):** Curadoria e refinamento de assets visuais da interface.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do Repositório
 
-```text
 .
-├── index.html      # Estrutura semântica e elementos da página
-├── style.css       # Estilização, temas (Light/Dark) e layouts Flexbox
-├── script.js       # Lógica de manipulação do DOM, áudio e localStorage
-├── background.jpg  # Imagem de fundo temática e acolhedora
-└── README.md       # Documentação do projeto
-```
+├── index.html      # Estrutura semântica principal
+├── style.css       # Estilização modular, variáveis e temas (Light/Dark)
+├── script.js       # Lógica de controle de estado, áudio e DOM
+├── background.jpg  # Asset visual temático do ambiente de estudo
+└── README.md       # Documentação técnica do projeto
 
 ---
 
-## 👩‍💻 Autora
-
+👩‍💻 **Autora**
 Desenvolvido por **Carolina Cavallaro**  
-Estudante de Análise e Desenvolvimento de Sistemas (UNINTER)
-
-- 💼 [LinkedIn](https://linkedin.com/in/carolinacavallaro/)
+Estudante de Análise e Desenvolvimento de Sistemas (UNINTER) | Focada em Full-Stack, Automação e IA.  
+- 💼 [LinkedIn](https://www.linkedin.com/in/carolcavallaro/)  
 - 🐙 [GitHub](https://github.com/carolcavallaro)
