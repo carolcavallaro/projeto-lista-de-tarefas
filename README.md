@@ -38,6 +38,10 @@ Aplicação web interativa desenvolvida para gerenciar tarefas do dia a dia, uni
 
 ---
 
+🌐 Para acessar a página do projeto, só clicar [aqui](https://github.com/carolcavallaro/projetoLanchonete.git)
+
+---
+
 👩‍💻 **Autora**
 Desenvolvido por **Carolina Cavallaro**  
 Estudante de Análise e Desenvolvimento de Sistemas (UNINTER) | Focada em Full-Stack, Automação e IA.  
