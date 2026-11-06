@@ -4,19 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Tarefas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="moldura" id="cartao">
-    <div class="cabecalho">
-      <h1>Lista de Tarefas</h1>
-      <div class="botoes-topo">
-        <button id="botao-tema" class="icone-botao" title="Modo Escuro/Claro">🌙</button>
-        <button id="botao-audio" class="icone-botao" title="Tocar/Pausar Lo-Fi">🎵</button>
-      </div>
+  <!-- Barra de Topo Fixa -->
+  <header class="topo-pagina">
+    <h1>Lista de Tarefas</h1>
+    <div class="botoes">
+      <button id="botao-tema" class="icone-botao" title="Modo Escuro/Claro">🌙</button>
+      <button id="botao-audio" class="icone-botao" title="Tocar/Pausar Lo-Fi">🎵</button>
+      <button id="botao-nova-lista" class="icone-botao" title="Nova Lista">➕</button>
     </div>
-    
+  </header>
+  
+  <!-- Card da lista (flutuante no centro) -->
+  <div class="moldura" id="cartao">
     <form id="formulario-principal" class="linha-input">
       <input type="text" id="input-tarefa" placeholder="Digite uma nova tarefa..." required>
       <button type="submit" class="botao-adicionar">Adicionar</button>
