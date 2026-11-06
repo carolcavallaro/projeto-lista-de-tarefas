@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Tarefas</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container" id="card">
-    <div class="header">
+  <div class="moldura" id="cartao">
+    <div class="cabecalho">
       <h1>Lista de Tarefas</h1>
-      <div class="controls">
-        <button id="theme-toggle" class="btn-icon" title="Modo Escuro/Claro">🌙</button>
-        <button id="audio-toggle" class="btn-icon" title="Tocar/Pausar Lo-Fi">🎵</button>
+      <div class="botoes-topo">
+        <button id="botao-tema" class="icone-botao" title="Modo Escuro/Claro">🌙</button>
+        <button id="botao-audio" class="icone-botao" title="Tocar/Pausar Lo-Fi">🎵</button>
       </div>
     </div>
     
-    <form id="task-form" class="input-group">
-      <input type="text" id="task-input" placeholder="Digite uma nova tarefa..." required />
-      <button type="submit" class="btn-add">Adicionar</button>
+    <form id="formulario-principal" class="linha-input">
+      <input type="text" id="input-tarefa" placeholder="Digite uma nova tarefa..." required>
+      <button type="submit" class="botao-adicionar">Adicionar</button>
     </form>
 
-    <ul id="task-list" class="task-list"></ul>
-    <p id="empty-msg" class="empty-state">Nenhuma tarefa cadastrada.</p>
+    <ul id="lista-itens" class="estilo-lista"></ul>
+    <p id="sem-mensagem" class="aviso-vazio">Nenhuma tarefa cadastrada.</p>
   </div>
 
   <!-- Audio Lo-Fi Royalty Free -->
-  <audio id="lofi-audio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
+  <audio id="audio-lofi" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
 
   <script src="script.js"></script>
 </body>

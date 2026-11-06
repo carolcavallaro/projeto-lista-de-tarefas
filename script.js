@@ -1,108 +1,108 @@
 // Elementos do DOM
-const taskForm = document.getElementById('task-form');
-const taskInput = document.getElementById('task-input');
-const taskList = document.getElementById('task-list');
-const emptyMsg = document.getElementById('empty-msg');
-const themeToggleBtn = document.getElementById('theme-toggle');
-const audioToggleBtn = document.getElementById('audio-toggle');
-const lofiAudio = document.getElementById('lofi-audio');
+const formularioTarefa = document.getElementById('formulario-principal');
+const inputTarefa = document.getElementById('input-tarefa');
+const listaTarefas = document.getElementById('lista-itens');
+const mensagemVazia = document.getElementById('sem-mensagem');
+const botaoTema = document.getElementById('botao-tema');
+const botaoAudio = document.getElementById('botao-audio');
+const audioLofi = document.getElementById('audio-lofi');
 
-// Carregar preferências e dados do localStorage
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-let isDarkTheme = localStorage.getItem('theme') === 'dark';
+// Carregar preferências e dados salvos no navegador (localStorage)
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+let temaEscuroAtivo = localStorage.getItem('tema') === 'dark';
 
-// Aplicar tema inicial
-if (isDarkTheme) {
-  document.body.classList.add('dark-theme');
-  themeToggleBtn.textContent = '☀️';
+// Aplicar tema inicial ao carregar a página
+if (temaEscuroAtivo) {
+  document.body.classList.add('tema-escuro');
+  botaoTema.textContent = '☀️';
 } else {
-  themeToggleBtn.textContent = '🌙';
+  botaoTema.textContent = '🌙';
 }
 
 // Alternar Tema Escuro/Claro
-themeToggleBtn.addEventListener('click', () => {
-  isDarkTheme = !isDarkTheme;
-  document.body.classList.toggle('dark-theme', isDarkTheme);
-  localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-  themeToggleBtn.textContent = isDarkTheme ? '☀️' : '🌙';
+botaoTema.addEventListener('click', () => {
+  temaEscuroAtivo = !temaEscuroAtivo;
+  document.body.classList.toggle('tema-escuro', temaEscuroAtivo);
+  localStorage.setItem('tema', temaEscuroAtivo ? 'dark' : 'light');
+  botaoTema.textContent = temaEscuroAtivo ? '☀️' : '🌙';
 });
 
 // Alternar Música
-let isPlaying = false;
-audioToggleBtn.addEventListener('click', () => {
-  if (isPlaying) {
-    lofiAudio.pause();
-    audioToggleBtn.textContent = '🎵';
+let estaTocando = false;
+botaoAudio.addEventListener('click', () => {
+  if (estaTocando) {
+    audioLofi.pause();
+    botaoAudio.textContent = '🎵';
   } else {
-    lofiAudio.play().catch(() => {
+    audioLofi.play().catch(() => {
       alert("Clique novamente para permitir o áudio no seu navegador!");
     });
-    audioToggleBtn.textContent = '⏸️';
+    botaoAudio.textContent = '⏸️';
   }
-  isPlaying = !isPlaying;
+  estaTocando = !estaTocando;
 });
 
-// Persistência das tarefas
-function saveTasks() {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+// Salvar tarefas no localStorage
+function salvarTarefas() {
+  localStorage.setItem('tarefas', JSON.stringify(tarefas));
 }
 
-// Renderização das Tarefas
-function renderTasks() {
-  taskList.innerHTML = '';
+// Renderizar as tarefas na tela
+function renderizarTarefas() {
+  listaTarefas.innerHTML = '';
 
-  if (tasks.length === 0) {
-    emptyMsg.style.display = 'block';
+  if (tarefas.length === 0) {
+    mensagemVazia.style.display = 'block';
   } else {
-    emptyMsg.style.display = 'none';
+    mensagemVazia.style.display = 'none';
   }
 
-  tasks.forEach((task, index) => {
+  tarefas.forEach((tarefa, indice) => {
     const li = document.createElement('li');
-    li.className = `task-item ${task.completed ? 'completed' : ''}`;
+    li.className = `item-tarefa ${tarefa.concluida ? 'concluida' : ''}`;
 
     li.innerHTML = `
-      <div class="task-content" onclick="toggleTask(${index})">
-        <input type="checkbox" ${task.completed ? 'checked' : ''} readOnly />
-        <span>${escapeHTML(task.text)}</span>
+      <div class="conteudo-tarefa" onclick="alternarTarefa(${indice})">
+        <input type="checkbox" ${tarefa.concluida ? 'checked' : ''} readOnly />
+        <span>${escaparHTML(tarefa.texto)}</span>
       </div>
-      <button class="btn-delete" onclick="deleteTask(event, ${index})" title="Excluir">🗑️</button>
+      <button class="botao-excluir" onclick="excluirTarefa(event, ${indice})" title="Excluir">🗑️</button>
     `;
 
-    taskList.appendChild(li);
+    listaTarefas.appendChild(li);
   });
 }
 
-// Evento de Adicionar Tarefa
-taskForm.addEventListener('submit', (e) => {
+// Evento de adicionar nova tarefa
+formularioTarefa.addEventListener('submit', (e) => {
   e.preventDefault();
-  const text = taskInput.value.trim();
+  const textoTarefa = inputTarefa.value.trim();
   
-  if (text) {
-    tasks.push({ text: text, completed: false });
-    saveTasks();
-    renderTasks();
-    taskInput.value = '';
+  if (textoTarefa) {
+    tarefas.push({ texto: textoTarefa, concluida: false });
+    salvarTarefas();
+    renderizarTarefas();
+    inputTarefa.value = '';
   }
 });
 
-// Alternar Concluído/Pendente
-function toggleTask(index) {
-  tasks[index].completed = !tasks[index].completed;
-  saveTasks();
-  renderTasks();
+// Marcar tarefa como concluída ou pendente
+function alternarTarefa(indice) {
+  tarefas[indice].concluida = !tarefas[indice].concluida;
+  salvarTarefas();
+  renderizarTarefas();
 }
 
-// Excluir Tarefa
-function deleteTask(event, index) {
-  event.stopPropagation();
-  tasks.splice(index, 1);
-  saveTasks();
-  renderTasks();
+// Excluir tarefa
+function excluirTarefa(evento, indice) {
+  evento.stopPropagation();
+  tarefas.splice(indice, 1);
+  salvarTarefas();
+  renderizarTarefas();
 }
 
-// Sanitização HTML
-function escapeHTML(str) {
+// Sanitizar texto digitado para evitar código malicioso no HTML
+function escaparHTML(str) {
   return str.replace(/[&<>'"]/g, 
     tag => ({
       '&': '&amp;',
@@ -114,5 +114,5 @@ function escapeHTML(str) {
   );
 }
 
-// Inicializar
-renderTasks();
+// Inicializar a aplicação listando o que estiver salvo
+renderizarTarefas();

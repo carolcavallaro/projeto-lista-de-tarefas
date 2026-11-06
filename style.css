@@ -11,7 +11,7 @@
 }
 
 /* Tema Escuro */
-body.dark-theme {
+body.tema-escuro {
   --card-bg: rgba(30, 39, 46, 0.92);
   --text: #f5f6fa;
   --text-muted: #dcdde1;
@@ -39,7 +39,7 @@ body {
   padding: 20px;
 }
 
-.container {
+.moldura {
   background: var(--card-bg);
   width: 100%;
   max-width: 480px;
@@ -50,7 +50,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-.header {
+.cabecalho {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,12 +62,12 @@ h1 {
   color: var(--text);
 }
 
-.controls {
+.botoes-topo {
   display: flex;
   gap: 8px;
 }
 
-.btn-icon {
+.icone-botao {
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text);
@@ -81,12 +81,12 @@ h1 {
   justify-content: center;
 }
 
-.btn-icon:hover {
+.icone-botao:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: var(--primary);
 }
 
-.input-group {
+.linha-input {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
@@ -108,7 +108,7 @@ input[type="text"]:focus {
   border-color: var(--primary);
 }
 
-button.btn-add {
+button.botao-adicionar {
   background-color: var(--primary);
   color: white;
   border: none;
@@ -119,15 +119,15 @@ button.btn-add {
   transition: background 0.2s;
 }
 
-button.btn-add:hover {
+button.botao-adicionar:hover {
   background-color: var(--primary-hover);
 }
 
-ul.task-list {
+ul.estilo-lista {
   list-style: none;
 }
 
-li.task-item {
+li.item-tarefa {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -136,16 +136,16 @@ li.task-item {
   transition: background 0.2s;
 }
 
-li.task-item:last-child {
+li.item-tarefa:last-child {
   border-bottom: none;
 }
 
-li.task-item.completed span {
+li.item-tarefa.concluida span {
   text-decoration: line-through;
   color: var(--text-muted);
 }
 
-.task-content {
+.conteudo-tarefa {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -153,14 +153,14 @@ li.task-item.completed span {
   flex: 1;
 }
 
-.task-content input[type="checkbox"] {
+.conteudo-tarefa input[type="checkbox"] {
   width: 18px;
   height: 18px;
   cursor: pointer;
   accent-color: var(--primary);
 }
 
-.btn-delete {
+.botao-excluir {
   background: none;
   border: none;
   color: var(--danger);
@@ -171,11 +171,11 @@ li.task-item.completed span {
   transition: background 0.2s;
 }
 
-.btn-delete:hover {
+.botao-excluir:hover {
   background-color: rgba(231, 76, 60, 0.15);
 }
 
-.empty-state {
+.aviso-vazio {
   text-align: center;
   color: var(--text-muted);
   font-size: 0.95rem;
