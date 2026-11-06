@@ -181,3 +181,32 @@ li.item-tarefa.concluida span {
   font-size: 0.95rem;
   margin-top: 15px;
 }
+
+/* Feedback visual durante o arraste */
+li.item-tarefa.arrastando {
+  opacity: 0.4;
+  background-color: var(--border);
+  border: 2px dashed var(--primary);
+  border-radius: 8px;
+}
+
+li.item-tarefa {
+  cursor: grab; /* Muda o cursor para indicar que pode ser pego */
+}
+
+li.item-tarefa:active {
+  cursor: grabbing;
+}
+
+/* Estilo da alça de arraste (pontinhos) */
+.alca-arraste {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: grab;
+  padding: 0 4px;
+  user-select: none;
+}
+
+.item-tarefa:active .alca-arraste {
+  cursor: grabbing;
+}

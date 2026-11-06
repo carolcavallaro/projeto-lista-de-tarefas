@@ -61,7 +61,22 @@ function renderizarTarefas() {
     const li = document.createElement('li');
     li.className = `item-tarefa ${tarefa.concluida ? 'concluida' : ''}`;
 
+    // Tornar o item arrastável e guardar sua posição
+    li.setAttribute('draggable', 'true');
+    li.dataset.indice = indice;
+
+    // Eventos de Drag and Drop individuais de cada item
+    li.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', indice);
+      li.classList.add('arrastando');
+    });
+
+    li.addEventListener('dragend', () => {
+      li.classList.remove('arrastando');
+    });
+
     li.innerHTML = `
+      <span class="alca-arraste" title="Arraste para reordenar">⋮⋮</span>
       <div class="conteudo-tarefa" onclick="alternarTarefa(${indice})">
         <input type="checkbox" ${tarefa.concluida ? 'checked' : ''} readOnly />
         <span>${escaparHTML(tarefa.texto)}</span>
@@ -71,6 +86,53 @@ function renderizarTarefas() {
 
     listaTarefas.appendChild(li);
   });
+}
+
+// Configurar a lista inteira para aceitar a reorganização (fora do forEach!)
+listaTarefas.addEventListener('dragover', (e) => {
+  e.preventDefault(); // Necessário para permitir soltar o item
+  const itemArrastando = document.querySelector('.arrastando');
+  
+  // Aqui chamamos corretamente a função passando a posição do mouse (e.clientY)
+  const elementoAbaixo = obterElementoAbaixo(listaTarefas, e.clientY);
+
+  if (!elementoAbaixo) {
+    listaTarefas.appendChild(itemArrastando);
+  } else {
+    listaTarefas.insertBefore(itemArrastando, elementoAbaixo);
+  }
+});
+
+listaTarefas.addEventListener('drop', (e) => {
+  e.preventDefault();
+
+  // Recalcula a ordem do array com base na nova posição visual dos elementos na tela
+  const novosItens = [...listaTarefas.querySelectorAll('.item-tarefa')];
+  const novaListaTarefas = novosItens.map(li => {
+    const indiceAntigo = li.dataset.indice;
+    return tarefas[indiceAntigo];
+  });
+
+  tarefas = novaListaTarefas;
+  salvarTarefas();
+  renderizarTarefas();
+});
+
+// Função matemática auxiliar para descobrir qual item está sob o cursor
+function obterElementoAbaixo(container, mouseY) {
+  const elementosSemArrasta = [...container.querySelectorAll('.item-tarefa:not(.arrastando)')];
+
+  return elementosSemArrasta.reduce((maisProximo, filho) => {
+    // CORRIGIDO: O nome correto do método nativo é getBoundingClientRect (sem o 'React')
+    const caixa = filho.getBoundingClientRect();
+    const offset = mouseY - caixa.top - caixa.height / 2;
+
+    if (offset < 0 && offset > maisProximo.offset) {
+      return { offset: offset, element: filho };
+    } else {
+      return maisProximo;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 // Evento de adicionar nova tarefa
